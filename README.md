@@ -91,6 +91,17 @@ Functions
 - createCampaign - deploys a new instance of a Campaign and stores the resulting address
 - getDeployedCampaigns - returns a list of all deployed campaigns
 
+## Next.js Project - notes and key learning points
+
+### Organising a Next.js project
+
+- automatically creates a new folder `.next` - 'where the magic happens'
+- understand how Next handles navigation or the creation of new pages in the application
+- note the `pages` folder - React components are turned into a visitable web page
+- e.g. new file `show.js` - React component - `crowdcoin.com/show`
+- or `newcampaign.js` - React component - `crowdcoin.com/newcampaign`
+- Next takes the file names and creates new routes / pages
+
 =====================================================
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
