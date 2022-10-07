@@ -29,7 +29,7 @@ beforeEach(async () => {
   campaignAddress = addresses[0]
 
   //   campaign = await new web3.eth.Contract(Campaign.abi, campaignAddress)
-  campaign = await new web3.eth.Contract(Campaign.abi, campaignAddress)
+  campaign = new web3.eth.Contract(Campaign.abi, campaignAddress)
 })
 
 describe("Campaigns", () => {

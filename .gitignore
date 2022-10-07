@@ -6,6 +6,7 @@ node_modules
 artifacts
 cache
 
+secrets.json
 
 # dependencies
 /node_modules

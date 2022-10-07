@@ -101,6 +101,79 @@ Functions
 - e.g. new file `show.js` - React component - `crowdcoin.com/show`
 - or `newcampaign.js` - React component - `crowdcoin.com/newcampaign`
 - Next takes the file names and creates new routes / pages
+- `index.js` is automatically the root route of our application
+
+### Interacting with Ethereum (module 163)
+
+- to interact with or access data from the Ethereum world we use web3.js and set up a provider
+- the provider is what web3.js uses to communicate with some external Ethereum network
+- in the short term rely on the provider automatically injected into the page by Metamask
+- after set up web3 - access the deployed Campaign Factory contract
+- this will return a contract instance that we can access to get a list of deployed campaigns
+- note that this assumes that users have a Metamask wallet installed
+
+### Why use Next.js? (module 169)
+
+- Next.js uses 'server-side rendering' - the Next server renders the entire React app itself
+- All of the JS code is executed on the Next server - it builds an HTML document then sends it to the browser
+- The benefit is that users see the content much more quickly (especially if user on mobile)
+- Next server sends down a completely rendered HTML document
+- Next is much more flexible, particularly for mobile users with a poor connection
+- After the Next server sends the HTML doc, it sends the Javascript code
+- Once this code is loaded into the browser the React app boots up and takes over inside the browser
+- Key idea being that before the React app takes over, already showing the HTML content on screen
+
+#### Window error message (explained in module 169)
+
+- Note that `window` is a global variable that is only available inside the browser
+- `window` is not available on `node.js` which is where the Next server is running
+- So when Next.js loads up our code to render our React app on the server, the window variable is not defined - this causes the error message `window is not defined`
+- Whenever writing a React component - consider whether the code will be executed on the Next server - if it is cannot assume have access to certain objects or variables defined in the browser
+
+### Metamask in the browser
+
+- Many people do not have Metamask running in their browser - especially on mobile devices
+- So, how do we ensure our application works for those people?
+- So the big idea in using Next.js - when our code is rendered on the Next server, we will reach out to the Ethereum network and do some initial calls / data fetching
+- Execute all of these requests from our server
+- So when the server sends the HTML doc to the users browser it doesn't matter whether they are using Metamask or have access to an Ethereum network
+- Have already taken care of data fetching for them - send an HTML document with all that information already contained inside
+- So users not using Metamask will still see information on the screen - doesn't matter if they don't even realise that Ethereum exists
+
+### Server vs client Web3 instances
+
+- Note that the `web3.js` file is executed twice:
+
+  1. First on the server to initially render the application
+  2. Then inside the browser
+
+- When it executes on the server the window global variable is not defined
+- By running `typeof window` can check if running on the server or the browser (returns an object)
+- In the browser - 'hijack' the Metamask provider and create our own instance of Web3
+- Use the copy of Web3 that is injected into the browser by Metamask
+- If on the server - need to make our own provider using the Infura remote node
+
+### GetInitialProps function (module 172)
+
+- We want to have Next.js perform our data fetching on the server
+- Next does not execute the `ComponentDidMount` method on the server
+- Have to move it to a different method - `GetInitialProps`
+- This is not used in traditional React
+- E.g. browser requests files - Next server will look at the `CampaignIndex` component and execute the `GetInitialProps` function tied to it
+- Next will execute this function first - will return some initial data that we want
+- Next will take this data and provide it to the `CampaignIndex` component as props (on the server)
+- This component will then be rendered on the server, Next will take the HTML component and send it to our browser
+- Note use of the `static` keyword - Next wants to retrieve our data without rendering the component as this is very computationally expensive
+- The component is rendered both on the server and on the client
+
+### Semantic UI React
+
+- docs https://react.semantic-ui.com/
+- install `npm install --save semantic-ui-react`
+- need to install the CSS module as well `npm install --save semantic-ui-css`
+- note the 'fluid' property on the Card component - takes up the width of its container
+- Note need to install the minified CSS file as per the docs - in app's entry file
+- `import 'semantic-ui-css/semantic.min.css'` in `index.js` (module 176)
 
 =====================================================
 
