@@ -174,6 +174,16 @@ Functions
 - note the 'fluid' property on the Card component - takes up the width of its container
 - Note need to install the minified CSS file as per the docs - in app's entry file
 - `import 'semantic-ui-css/semantic.min.css'` in `index.js` (module 176)
+- Button prop 'primary' - this is shorthand for equals 'true' - adds primary styling
+
+### The need for a layout (module 178)
+
+- Get a header / footer injected on each page
+- Make a separate 'components' directory
+- Make a `Layout.js` component - common elements for every page of the application
+- Import this component into every page and display
+- Single layout file with all common elements - use in each page
+
 
 =====================================================
 
