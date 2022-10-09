@@ -1,7 +1,7 @@
 import Head from "next/head"
 // import styles from "../styles/Home.module.css"
 // import Web3 from "web3"
-import React, { Component } from "react"
+import React, { Component, useRef } from "react"
 import "semantic-ui-css/semantic.min.css"
 import { Card, Button } from "semantic-ui-react"
 import factory from "../ethereum/factory"
@@ -37,8 +37,13 @@ class CampaignIndex extends Component {
         <Layout>
           <div>
             <h3>Open Campaigns</h3>
-            <div>{this.renderCampaigns()}</div>
-            <Button content="Create Campaign" icon="add circle" primary />
+            <Button
+              floated="right"
+              content="Create Campaign"
+              icon="add circle"
+              primary
+            />
+            {this.renderCampaigns()}
           </div>
         </Layout>
       </div>
