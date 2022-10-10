@@ -184,6 +184,35 @@ Functions
 - Import this component into every page and display
 - Single layout file with all common elements - use in each page
 
+### Input change handlers (module 187)
+
+- Whenever want to handle some user input inside a React component:
+  1. Set up a new piece of state to hold the value
+  2. Add an event handler on the input component
+- When the user types in the input form, triggers onChange function and gives us the event object
+- The event object contains the new value - use this to update state
+- This causes the entire component to re-render
+
+### Form submittal (module 188)
+
+- Note - do not want to place parentheses on the 'onSubmit' function call in the Form component
+- Not trying to run the function right now, want to pass a reference to onSubmit
+- Then the function can be executed at some point in the future
+
+### Form error handling (module 190)
+
+- Use the 'try / catch' statement to catch any error message
+- Create a new state property - anytime an error is thrown inside the catch block can update the state object and use the subsequent page re-render to show the error message on the form
+- Note that a 'thrown error' has a message property which is a string that can be used in our React component
+- Note need to add an 'error' prop to the Form component
+- Note use of `!!` to turn a string into equivalent boolean value and avoid React warning
+
+### Using the new dynamic routing feature in Next.js
+
+- Note have reworked the example given by Stephen to use the new dynamic routing functionality in Next.js
+- Link to the docs for the `next/router` API https://nextjs.org/docs/api-reference/next/router
+- Note that 'useRouter' is a React Hook so have reworked the `new.js` page to be a functional component
+- Have also updated the `index.js` page and the 'CampaignIndex' component to be a functional component and updated the `getInitialProps` method to reflect this
 
 =====================================================
 
