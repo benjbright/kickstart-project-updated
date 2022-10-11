@@ -25,3 +25,7 @@ main().catch((error) => {
 // Contract deployed on Goerli test network at address:
 // 0x0693157bE694f1Acb330022B7707Ce5eedc1F4Ee
 // Contract verified on Etherscan
+
+// NOTE second deployment on Goerli test network at address:
+// 0x5C93b0D761c2643C9640e9DE4692760c1506a7C5
+// Contract verified on Etherscan

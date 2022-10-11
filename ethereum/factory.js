@@ -5,7 +5,7 @@ const abi = CampaignFactory.abi
 
 const instance = new web3.eth.Contract(
   abi,
-  "0x0693157be694f1acb330022b7707ce5eedc1f4ee"
+  "0x5C93b0D761c2643C9640e9DE4692760c1506a7C5"
 )
 
 export default instance
