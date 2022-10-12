@@ -1,6 +1,7 @@
 import React from "react"
 import { useRouter } from "next/router"
-import { Card, Grid } from "semantic-ui-react"
+import Link from "next/link"
+import { Card, Grid, Button } from "semantic-ui-react"
 import "semantic-ui-css/semantic.min.css"
 import Layout from "../../components/Layout"
 import { getCampaign } from "../../ethereum/campaign"
@@ -60,12 +61,25 @@ const CampaignShow = ({
   return (
     <Layout>
       <h3>Campaign Show</h3>
+      <p>{address}</p>
       <Grid>
-        <Grid.Column width={10}>{renderCards()}</Grid.Column>
+        <Grid.Row>
+          <Grid.Column width={10}>{renderCards()}</Grid.Column>
 
-        <Grid.Column width={6}>
-          <ContributeForm address={address} />
-        </Grid.Column>
+          <Grid.Column width={6}>
+            <ContributeForm address={address} />
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column>
+            <Link href={`/campaigns/${address}/requests`}>
+              <a>
+                <Button primary>View Requests</Button>
+              </a>
+            </Link>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     </Layout>
   )

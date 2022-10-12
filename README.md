@@ -204,7 +204,7 @@ Functions
 - Use the 'try / catch' statement to catch any error message
 - Create a new state property - anytime an error is thrown inside the catch block can update the state object and use the subsequent page re-render to show the error message on the form
 - Note that a 'thrown error' has a message property which is a string that can be used in our React component
-- Note need to add an 'error' prop to the Form component
+- NOTE - NEED TO UPDATE THE FORM COMPONENT WITH THE ERROR PROP, not just the Message component
 - Note use of `!!` to turn a string into equivalent boolean value and avoid React warning
 
 ### Using the new dynamic routing feature in Next.js
@@ -213,6 +213,25 @@ Functions
 - Link to the docs for the `next/router` API https://nextjs.org/docs/api-reference/next/router
 - Note that 'useRouter' is a React Hook so have reworked the `new.js` page to be a functional component
 - Have also updated the `index.js` page and the 'CampaignIndex' component to be a functional component and updated the `getInitialProps` method to reflect this
+
+### Try / Catch (module 211)
+
+- Call the 'contribute' function on the Campaign smart contract
+- Anytime we call a function, remember to wrap it in a try / catch statement
+- Ensures we can handle any errors correctly
+
+### Refreshing contract data (module 212)
+
+- Note that making a change to our contract will not cause an update on-screen
+- To get an update we need to refresh our data source
+- Need to re-run our `getInitialProps` function
+- Can use the 'router' object to refresh the current page - `router.replace({current page})`
+- This will show the same component on-screen but with new data
+- Link to docs https://nextjs.org/docs/api-reference/next/router#routerreplace
+
+### 'Fancy Javascript' (module 222)
+
+- Note that the console.log() output on getInitialProps is on the server and is shown in the terminal
 
 =====================================================
 
