@@ -31,7 +31,9 @@ const RequestIndex = ({ address, requests, requestCount, approversCount }) => {
       <h3>Requests</h3>
       <Link href={`/campaigns/${address}/requests/new`}>
         <a>
-          <Button primary>Add Request</Button>
+          <Button primary floated="right" style={{ marginBottom: 10 }}>
+            Add Request
+          </Button>
         </a>
       </Link>
       <Table>
@@ -49,6 +51,7 @@ const RequestIndex = ({ address, requests, requestCount, approversCount }) => {
 
         <Body>{renderRows()}</Body>
       </Table>
+      <div>Found {requestCount} requests</div>
     </Layout>
   )
 }

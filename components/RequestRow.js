@@ -5,6 +5,7 @@ import { getCampaign } from "../ethereum/campaign"
 
 const RequestRow = ({ id, request, address, approversCount }) => {
   const { Row, Cell } = Table
+  const readyToFinalize = request.approvalCount > approversCount / 2
 
   const onApprove = async () => {
     const campaign = getCampaign(address)
@@ -13,7 +14,7 @@ const RequestRow = ({ id, request, address, approversCount }) => {
       from: accounts[0],
     })
   }
-  
+
   const onFinalize = async () => {
     const campaign = getCampaign(address)
     const accounts = await web3.eth.getAccounts()
@@ -23,7 +24,10 @@ const RequestRow = ({ id, request, address, approversCount }) => {
   }
 
   return (
-    <Row>
+    <Row
+      disabled={request.complete}
+      positive={readyToFinalize && !request.complete}
+    >
       <Cell>{id}</Cell>
       <Cell>{request.description}</Cell>
       <Cell>{web3.utils.fromWei(request.value, "ether")}</Cell>
@@ -32,14 +36,18 @@ const RequestRow = ({ id, request, address, approversCount }) => {
         {request.approvalCount} / {approversCount}
       </Cell>
       <Cell>
-        <Button color="green" basic onClick={onApprove}>
-          Approve
-        </Button>
+        {request.complete ? null : (
+          <Button color="green" basic onClick={onApprove}>
+            Approve
+          </Button>
+        )}
       </Cell>
       <Cell>
-        <Button color="teal" basic onClick={onFinalize}>
-          Finalize
-        </Button>
+        {request.complete ? null : (
+          <Button color="teal" basic onClick={onFinalize}>
+            Finalize
+          </Button>
+        )}
       </Cell>
     </Row>
   )
